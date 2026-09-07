@@ -1,5 +1,6 @@
 package com.ghosty.traffic.rider
 
+import com.ghosty.traffic.rider.feature.profile.ProfileFeatureModule
 import com.ghosty.traffic.rider.db.AppDatabaseModule
 import com.ghosty.traffic.rider.framework.tools.ResModule
 import com.ghosty.traffic.rider.main.MainModule
@@ -14,6 +15,7 @@ internal object AppModule {
             AppDatabaseModule.get(),
             MainModule.get(),
             ResModule.get(),
+            ProfileFeatureModule.get(),
         )
     }
 }

@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
@@ -33,6 +37,9 @@ class MainActivity : ComponentActivity() {
 private fun GhostyTrafficRiderApp() {
     val viewModel = koinViewModel<MainViewModel>()
 
+    Column(Modifier.fillMaxSize()) {
+        VpnPanel()
+        Box(Modifier.weight(1f)) {
     NavDisplay(
         backStack = viewModel.getBackStack(),
         onBack = viewModel::goBack,
@@ -67,4 +74,6 @@ private fun GhostyTrafficRiderApp() {
                 .forEach { it.invoke().invoke(this) }
         }
     )
+        }
+    }
 }

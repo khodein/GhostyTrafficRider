@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Routing matches by Android package name (PROCESS-NAME rules); without this,
+         PackageManager hides non-system apps' names for a given UID on API 30+. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -11,9 +19,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GhostyTrafficRider">
+        <service
+            android:name="com.ghosty.traffic.rider.vpn.ProxyVpnService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="VPN connection using the user-selected proxy profile" />
+        </service>
         <activity
             android:name=".main.presentation.MainActivity"
             android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection"
             android:label="@string/app_name"
             android:theme="@style/Theme.GhostyTrafficRider">
             <intent-filter>

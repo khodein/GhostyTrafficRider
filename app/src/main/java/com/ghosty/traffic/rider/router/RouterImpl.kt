@@ -4,9 +4,10 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavKey
 import com.ghosty.traffic.rider.framework.router.Router
+import com.ghosty.traffic.rider.feature.profile.navigation.ProfileRoute
 
 internal class RouterImpl : Router {
-    private val backStack: SnapshotStateList<NavKey> = mutableStateListOf()
+    private val backStack: SnapshotStateList<NavKey> = mutableStateListOf(ProfileRoute)
 
     override fun getBackStack(): List<NavKey> = backStack
 
@@ -15,6 +16,6 @@ internal class RouterImpl : Router {
     }
 
     override fun goBack() {
-        backStack.removeLastOrNull()
+        if (backStack.size > 1) backStack.removeLastOrNull()
     }
 }

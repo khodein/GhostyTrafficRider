@@ -21,9 +21,16 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-logic" />
+            <option value="$PROJECT_DIR$/feature-profile" />
+            <option value="$PROJECT_DIR$/feature-profile/api" />
+            <option value="$PROJECT_DIR$/feature-profile/impl" />
+            <option value="$PROJECT_DIR$/feature-routing" />
+            <option value="$PROJECT_DIR$/feature-routing/api" />
+            <option value="$PROJECT_DIR$/feature-routing/impl" />
             <option value="$PROJECT_DIR$/framework" />
             <option value="$PROJECT_DIR$/framework/router" />
             <option value="$PROJECT_DIR$/framework/tools" />
+            <option value="$PROJECT_DIR$/vpn" />
           </set>
         </option>
       </GradleProjectSettings>

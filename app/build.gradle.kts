@@ -11,6 +11,10 @@ plugins {
 android {
     namespace = "com.ghosty.traffic.rider"
 
+    packaging {
+        jniLibs.useLegacyPackaging = true
+    }
+
     defaultConfig {
         applicationId = "com.ghosty.traffic.rider"
     }
@@ -20,6 +24,8 @@ dependencies {
     implementation(project(":framework"))
     implementation(project(":framework:tools"))
     implementation(project(":framework:router"))
+    implementation(project(":vpn"))
+    implementation(files("../vpn/libs/libmihomo-android-v0.3.1.aar"))
     implementationFeatureModules()
 }
 
