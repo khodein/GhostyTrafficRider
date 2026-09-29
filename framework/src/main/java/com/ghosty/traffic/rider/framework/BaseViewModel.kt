@@ -58,8 +58,6 @@ abstract class BaseViewModel<State : UiState> : ViewModel() {
         }
     }
 
-    abstract fun attach()
-
     @CallSuper
     open fun onUiStart() {
         blockStore.onUiStart()

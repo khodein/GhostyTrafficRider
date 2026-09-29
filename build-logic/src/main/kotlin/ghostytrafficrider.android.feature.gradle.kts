@@ -20,6 +20,7 @@ fun DependencyHandler.addFeatureDependencies() {
     add("implementation", project(":framework:router"))
     add("implementation", project(":framework"))
     add("implementation", project(":framework:tools"))
+    add("implementation", project(":framework:uikit"))
 }
 
 pluginManager.withPlugin("com.android.library") {

@@ -242,7 +242,7 @@ rules:
 
 ## Модули
 
-- `feature-profile` — экраны профилей, импорт/вставка YAML, парсинг,
+- `feature-selfprofile` — экраны профилей, импорт/вставка YAML, парсинг,
   хранение профиля. Для `impl` используется
   `ghostytrafficrider.android.feature`, для `api` —
   `ghostytrafficrider.android.feature.api`.
@@ -255,8 +255,8 @@ rules:
   TASKS.md), т.к. `feature-routing` и так его использует.
 
 Каждая фича сразу разделена на `api` и `impl`:
-- `:feature-profile:api`, `:feature-routing:api` — публичные модели и контракты.
-- `:feature-profile:impl`, `:feature-routing:impl` — UI, парсинг, хранение и DI.
+- `:feature-selfprofile:api`, `:feature-routing:api` — публичные модели и контракты.
+- `:feature-selfprofile:impl`, `:feature-routing:impl` — UI, парсинг, хранение и DI.
   Реализация зависит от своего `api`; классы реализации объявляются `internal`.
 - Другие фичи и `vpn` используют только `api`; `app` подключает `impl` для DI.
   Публичная точка сборки Koin-модуля — единственное инфраструктурное исключение.
@@ -272,7 +272,7 @@ rules:
 `:framework:tools` + `:framework:router`), новые модули встраиваются в неё,
 а не строятся с нуля:
 
-- `feature-profile:impl` и `feature-routing:impl` зависят от `:framework`,
+- `feature-selfprofile:impl` и `feature-routing:impl` зависят от `:framework`,
   `:framework:tools`, `:framework:router` так же, как сейчас `:app`
   (`implementation(project(":framework"))` и т.д. — см. `app/build.gradle.kts`).
 - Каждый экран регистрирует свои destinations через `Router.Provider`,
@@ -310,7 +310,7 @@ rules:
 
 ## Новая зависимость: YAML-парсер
 
-Используется `org.snakeyaml:snakeyaml-engine:2.9` в `feature-profile:impl`.
+Используется `org.snakeyaml:snakeyaml-engine:2.9` в `feature-selfprofile:impl`.
 Первоначальный кандидат `kaml` архивирован автором. SnakeYAML Engine
 разбирает YAML в map/list и записывает его обратно после удаления `rules`.
 Значения остальных ключей сохраняются; форматирование и комментарии — нет.

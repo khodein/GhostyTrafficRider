@@ -23,7 +23,7 @@ extensions.configure<ApplicationExtension>("android") {
     }
 
     defaultConfig {
-        minSdk = 28
+        minSdk = 30
         targetSdk = 37
         versionCode = code
         versionName = name

@@ -24,8 +24,7 @@ dependencies {
     implementation(project(":framework"))
     implementation(project(":framework:tools"))
     implementation(project(":framework:router"))
-    implementation(project(":vpn"))
-    implementation(files("../vpn/libs/libmihomo-android-v0.3.1.aar"))
+    implementation(files("../feature-vpn/libs/libmihomo-android-v0.3.1.aar"))
     implementationFeatureModules()
 }
 

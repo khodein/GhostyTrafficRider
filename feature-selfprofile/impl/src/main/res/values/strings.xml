@@ -1,0 +1,19 @@
+<resources>
+    <string name="profile_parse_error_blank_input">Вставьте YAML-конфигурацию</string>
+    <string name="profile_parse_error_invalid_yaml">Не удалось прочитать YAML — проверьте формат конфигурации</string>
+    <string name="profile_parse_error_invalid_mode">Конфигурация должна работать в режиме mode: rule</string>
+    <string name="profile_parse_error_missing_proxy">В конфигурации нет ни одного сервера</string>
+    <string name="profile_parse_error_missing_name">Не указано имя сервера</string>
+    <string name="profile_parse_error_missing_type">Не указан тип (протокол) сервера</string>
+    <string name="profile_parse_error_missing_server">Не указан адрес сервера</string>
+    <string name="profile_parse_error_invalid_port_format">Порт сервера должен состоять только из цифр</string>
+    <string name="profile_parse_error_invalid_port_range">Некорректный порт сервера — укажите значение от 1 до 65535</string>
+    <string name="profile_parse_error_missing_proxy_group">В конфигурации нет группы прокси с именем PROXY</string>
+    <string name="profile_error_duplicate_id">Хранилище содержит повторяющиеся профили</string>
+    <string name="profile_error_missing_active">Активный профиль отсутствует в хранилище</string>
+    <string name="profile_error_not_found">Профиль не найден</string>
+    <string name="profile_error_storage_directory">Не удалось создать хранилище профилей</string>
+    <string name="profile_error_load_generic">Не удалось загрузить профили, произошла ошибка</string>
+    <string name="profile_add_new">Добавить новый профиль</string>
+    <string name="profile_my_profiles">Мои профили</string>
+</resources>

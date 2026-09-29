@@ -28,17 +28,17 @@
 Каркас создан. Пользователь подтвердил успешный Gradle Sync после
 перехода на convention-плагины. Сборка агентом не запускалась.
 
-### [x] A1. Создать модули `feature-profile:api` и `feature-profile:impl`
+### [x] A1. Создать модули `feature-selfprofile:api` и `feature-selfprofile:impl`
 - Структура по [../MODULES.md](../MODULES.md): пустой `api` с
   `android.feature.api`, `impl` зависит от `api`. Namespace API:
-  `com.ghosty.traffic.rider.feature.profile.api`.
-- `feature-profile/impl/build.gradle.kts` с плагином `android.feature`
-  (см. SPEC → "Модули"), `namespace = "com.ghosty.traffic.rider.feature.profile.impl"`.
-- `feature-profile/impl/src/main/AndroidManifest.xml` — пустой (`<manifest />`),
+  `com.ghosty.traffic.rider.feature.selfprofile.api`.
+- `feature-selfprofile/impl/build.gradle.kts` с плагином `android.feature`
+  (см. SPEC → "Модули"), `namespace = "com.ghosty.traffic.rider.feature.selfprofile.impl"`.
+- `feature-selfprofile/impl/src/main/AndroidManifest.xml` — пустой (`<manifest />`),
   как у `:framework:router`/`:framework:tools`.
 - Пустой Koin-модуль `ProfileFeatureModule` (пока без биндингов) в
-  `feature-profile/impl/src/main/java/.../feature/profile/ProfileFeatureModule.kt`.
-- **Готово, когда**: `./gradlew :feature-profile:impl:assembleDebug` (или
+  `feature-selfprofile/impl/src/main/java/.../feature/profile/ProfileFeatureModule.kt`.
+- **Готово, когда**: `./gradlew :feature-selfprofile:impl:assembleDebug` (или
   синхронизация в Android Studio) проходит без ошибок, модуль виден в
   Project view.
 
@@ -65,14 +65,14 @@ B1–B3 и C1 реализованы; статус `[~]` до проверки �
 
 ### [~] B1. Добавить YAML-зависимость
 - Добавлен SnakeYAML Engine 2.9 (альтернатива архивированному `kaml`) в `gradle/libs.versions.toml`
-  (`[versions]` + `[libraries]`) и в `feature-profile/impl/build.gradle.kts`.
+  (`[versions]` + `[libraries]`) и в `feature-selfprofile/impl/build.gradle.kts`.
 - **Готово, когда**: пустой тестовый вызов парсера компилируется и линкуется
   (проверка пользователем; тесты пока отложены).
 
 ### [~] B2. Определить `ProxyProfile` и парсер
-- `data class ProxyProfile` (см. SPEC → "Данные") в `feature-profile:api`
+- `data class ProxyProfile` (см. SPEC → "Данные") в `feature-selfprofile:api`
   (пакет `.../feature/profile/model/`).
-- `internal` функция/класс `ProxyProfileParser` в `feature-profile:impl`, принимает сырой YAML-текст целиком,
+- `internal` функция/класс `ProxyProfileParser` в `feature-selfprofile:impl`, принимает сырой YAML-текст целиком,
   возвращает `Result<ProxyProfile>` (или sealed class
   `ParseResult.Success/Error`). Логика:
   1. распарсить YAML в дерево (YAML-узел, не строгий data class — конфиг
@@ -96,8 +96,8 @@ B1–B3 и C1 реализованы; статус `[~]` до проверки �
 ## Стадия C — Хранение
 
 ### [~] C1. Файловое хранилище профилей
-- Контракт `ProfileStorage` в `feature-profile:api`, `internal` реализация
-  в `feature-profile:impl`: читает/пишет
+- Контракт `ProfileStorage` в `feature-selfprofile:api`, `internal` реализация
+  в `feature-selfprofile:impl`: читает/пишет
   `profiles.json` в `filesDir` через `kotlinx.serialization`.
 - API: `getAll(): Flow<List<ProxyProfile>>`, `save(profile: ProxyProfile)`,
   `delete(id: String)`, `getActive(): Flow<ProxyProfile?>`, `select(id: String?)`.

@@ -19,18 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GhostyTrafficRider">
-        <service
-            android:name="com.ghosty.traffic.rider.vpn.ProxyVpnService"
-            android:exported="false"
-            android:foregroundServiceType="specialUse"
-            android:permission="android.permission.BIND_VPN_SERVICE">
-            <intent-filter>
-                <action android:name="android.net.VpnService" />
-            </intent-filter>
-            <property
-                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="VPN connection using the user-selected proxy profile" />
-        </service>
         <activity
             android:name=".main.presentation.MainActivity"
             android:exported="true"

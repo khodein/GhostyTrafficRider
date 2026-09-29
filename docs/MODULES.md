@@ -28,7 +28,7 @@
 ### Пример
 
 ```text
-feature-profile/
+feature-selfprofile/
   api/
     build.gradle.kts
     src/main/AndroidManifest.xml
@@ -40,7 +40,7 @@ feature-profile/
 ```
 
 Корневой каталог фичи — контейнер, собственного `build.gradle.kts` и `src`
-у него нет. Kotlin package может оставаться предметным (`feature.profile`):
+у него нет. Kotlin package может оставаться предметным (`feature.selfprofile`):
 границу видимости задаёт Gradle-модуль, а не суффикс пакета.
 
 ## Gradle-конфигурация
@@ -57,7 +57,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ghosty.traffic.rider.feature.profile.api"
+    namespace = "com.ghosty.traffic.rider.feature.selfprofile.api"
 }
 ```
 
@@ -69,11 +69,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ghosty.traffic.rider.feature.profile.impl"
+    namespace = "com.ghosty.traffic.rider.feature.selfprofile.impl"
 }
 
 dependencies {
-    implementation(project(":feature-profile:api"))
+    implementation(project(":feature-selfprofile:api"))
 }
 ```
 
@@ -83,7 +83,7 @@ dependencies {
   `impl` от своего `api` добавляется явно.
 - В обоих подмодулях создаёт пустой `src/main/AndroidManifest.xml`.
 - Проверяет уникальность namespace; для новой фичи заменяет `profile`
-  и `feature-profile` в шаблоне.
+  и `feature-selfprofile` в шаблоне.
 - Использует автообнаружение в `settings.gradle.kts` и
   `implementationFeatureModules()` в `app/build.gradle.kts`: они уже
   поддерживают `feature-*/api` и `feature-*/impl`.
